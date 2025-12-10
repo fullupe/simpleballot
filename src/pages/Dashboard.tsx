@@ -28,7 +28,10 @@ export default function Dashboard() {
   
   const [draws, setDraws] = useState<Draw[]>([]);
   const [isCreating, setIsCreating] = useState(false);
+
   const [newTitle, setNewTitle] = useState('');
+  const [partNumber, setPartNumber] = useState<number | any>();
+
   const [loadingDraws, setLoadingDraws] = useState(true);
 
   useEffect(() => {
@@ -84,7 +87,7 @@ export default function Dashboard() {
         created_by: user.id,
         title: newTitle || 'Untitled Ballot',
         shuffle_map: shuffleMap as unknown as Json,
-        participants_count: 6,
+        participants_count: partNumber || 6,
         status: 'open',
       })
       .select()
@@ -147,18 +150,31 @@ export default function Dashboard() {
         {/* Create New Ballot */}
         <Card className="mb-8 border-2 border-dashed border-primary/30 bg-primary/5">
           <CardContent className="pt-6">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="flex-1">
+            <div className="flex flex-col sm:flex-row gap-4 items-center">
+              <div className="flex-1 space-y-4">
                 <Label htmlFor="title" className="sr-only">Ballot Title</Label>
                 <Input
                   id="title"
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
-                  placeholder="Enter ballot title (e.g., Q1 Rotation)"
+                  placeholder="Enter ballot title (e.g., susu-2025)"
                   className="text-lg"
+                  maxLength={20}
+                />
+
+                <Label htmlFor="title" className="sr-only">Participant Count</Label>
+                <Input
+                  id="Pnumber"
+                  value={partNumber}
+                  onChange={(e) => setPartNumber(e.target.value)}
+                  placeholder="Enter participants count (2-12)"
+                  className="text-lg"
+                  maxLength={2}
+                   min={2}
+                   max={12}
                 />
               </div>
-              <Button onClick={createDraw} disabled={isCreating} size="lg">
+              <Button  onClick={createDraw} disabled={isCreating || !newTitle || Number(partNumber) < 2 || Number(partNumber) > 12 } size="lg">
                 {isCreating ? (
                   <LoadingSpinner size="sm" />
                 ) : (
