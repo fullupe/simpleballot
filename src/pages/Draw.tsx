@@ -70,7 +70,8 @@ export default function DrawPage() {
         .from('draws')
         .select('*')
         .eq('id', id)
-        .maybeSingle();
+         .single()
+        // .maybeSingle();
       
       if (error || !data) {
         toast({ title: 'Error', description: 'Ballot not found', variant: 'destructive' });
