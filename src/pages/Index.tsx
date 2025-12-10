@@ -6,6 +6,8 @@ import { Vote, Shield, Users, Eye, ArrowRight } from 'lucide-react';
 export default function Index() {
   const navigate = useNavigate();
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -154,9 +156,25 @@ export default function Index() {
 
       {/* Footer */}
       <footer className="py-8 border-t border-border">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
+        {/* <div className="container mx-auto px-4 text-center text-muted-foreground">
           <p>© 2024 FairDraw. Built for transparent group decisions.</p>
-        </div>
+        </div> */}
+        <div className="container mx-auto px-4 text-center text-muted-foreground">
+        <p>
+          &copy; {currentYear} FairDraw. Built for transparent group decisions.
+        </p>
+        <p className="mt-1 text-sm">
+          A project by{' '}
+          <a
+            href="https://williamg.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline transition-colors"
+          >
+            William G.
+          </a>
+        </p>
+      </div>
       </footer>
     </div>
   );
