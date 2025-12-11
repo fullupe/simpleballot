@@ -9,8 +9,14 @@ export function shuffleArray<T>(array: T[]): T[] {
 }
 
 // Generate a shuffle map: slot position (1-6) -> month position (1-6)
-export function generateShuffleMap(): Record<string, number> {
-  const positions = [1, 2, 3, 4, 5, 6];
+export function generateShuffleMap(partNumber): Record<string, number> {
+
+
+  const positions = Array.from({length:partNumber},(_,i)=>i+1)
+
+  //const positions2 =  [1, 2, 3, 4, 5, 6];
+ 
+
   const shuffled = shuffleArray(positions);
   
   const map: Record<string, number> = {};
@@ -30,6 +36,12 @@ export function getPositionLabel(position: number): string {
     4: '4th',
     5: '5th',
     6: '6th',
+    7: '7th',
+    8: '8th',
+    9: '9th',
+    10: '10th',
+    11: '11th',
+    12: '12th',
   };
   return labels[position] || `${position}th`;
 }

@@ -79,7 +79,7 @@ export default function Dashboard() {
     if (!user) return;
     
     setIsCreating(true);
-    const shuffleMap = generateShuffleMap();
+    const shuffleMap = generateShuffleMap(partNumber);
     
     const { data, error } = await supabase
       .from('draws')
@@ -87,7 +87,7 @@ export default function Dashboard() {
         created_by: user.id,
         title: newTitle || 'Untitled Ballot',
         shuffle_map: shuffleMap as unknown as Json,
-        participants_count: partNumber || 6,
+        participants_count: partNumber,
         status: 'open',
       })
       .select()

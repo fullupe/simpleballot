@@ -11,10 +11,14 @@ interface BallotGridProps {
   currentSessionId: string;
   disabled: boolean;
   onSelect: (slot: number) => void;
+  participant_count:number;
 }
 
-export function BallotGrid({ selections, currentSessionId, disabled, onSelect }: BallotGridProps) {
-  const slots = [1, 2, 3, 4, 5, 6];
+export function BallotGrid({ selections, currentSessionId, disabled, onSelect,participant_count }: BallotGridProps) {
+
+  const slots = Array.from({length:participant_count},(_,i)=>i+1)
+
+  //const slots = [1, 2, 3,4,5,6];
   
   const getSelectionForSlot = (slot: number) => {
     return selections.find(s => s.selected_slot === slot);

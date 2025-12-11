@@ -43,6 +43,8 @@ export default function DrawPage() {
   const [showNameDialog, setShowNameDialog] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+   const currentYear = new Date().getFullYear();
+
   // Initialize session from storage or generate new
   useEffect(() => {
     if (!id) return;
@@ -291,6 +293,7 @@ export default function DrawPage() {
                 currentSessionId={sessionId}
                 disabled={!participantName || isSubmitting}
                 onSelect={handleSlotSelect}
+                participant_count={draw.participants_count}
               />
               {isSubmitting && (
                 <div className="flex justify-center mt-4">
@@ -300,6 +303,33 @@ export default function DrawPage() {
             </CardContent>
           </Card>
         )}
+
+
+        <footer className="py-8 border-t border-border">
+        {/* <div className="container mx-auto px-4 text-center text-muted-foreground">
+          <p>© 2024 FairDraw. Built for transparent group decisions.</p>
+        </div> */}
+        <div className="container mx-auto px-4 text-center text-muted-foreground">
+        <p>
+          &copy; {currentYear} FairDraw. Built for transparent group decisions.
+        </p>
+        <p className="mt-1 text-sm">
+          A project by{' '}
+          <a
+            href="https://williamg.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline transition-colors"
+          >
+            William G.
+          </a>
+        </p>
+      </div>
+      </footer>
+
+
+
+
       </main>
     </div>
   );
