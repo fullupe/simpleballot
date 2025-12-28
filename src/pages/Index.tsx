@@ -166,12 +166,12 @@ export default function Index() {
         <p className="mt-1 text-sm">
           A project by{' '}
           <a
-            href="https://williamg.vercel.app"
+            href="https://williamgyekye.online"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline transition-colors"
           >
-            William G.
+            William
           </a>
         </p>
       </div>
