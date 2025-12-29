@@ -9,6 +9,7 @@ import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Draw from "./pages/Draw";
 import NotFound from "./pages/NotFound";
+import Comments from "./pages/Comments";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/draw/:id" element={<Draw />} />
+            <Route path="/comments" element={<Comments />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

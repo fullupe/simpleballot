@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { generateShuffleMap } from '@/lib/shuffle';
-import { Vote, Plus, Copy, ExternalLink, LogOut, Users } from 'lucide-react';
+import { Vote, Plus, Copy, ExternalLink, LogOut, Users, MessageSquare } from 'lucide-react';
 import { Json } from '@/integrations/supabase/types';
 
 interface Draw {
@@ -126,7 +126,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-card">
+      {/* <header className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg gradient-hero">
@@ -138,6 +138,27 @@ export default function Dashboard() {
             <LogOut className="h-4 w-4 mr-2" />
             Sign Out
           </Button>
+        </div>
+      </header> */}
+
+      <header className="border-b border-border bg-card">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-lg gradient-hero">
+              <Vote className="h-5 w-5 text-primary-foreground" />
+            </div>
+            <h1 className="text-xl font-bold text-foreground">FairDraw</h1>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" onClick={() => navigate('/comments')}>
+              <MessageSquare className="h-4 w-4 mr-2" />
+              Comments
+            </Button>
+            <Button variant="ghost" onClick={handleSignOut}>
+              <LogOut className="h-4 w-4 mr-2" />
+              Sign Out
+            </Button>
+          </div>
         </div>
       </header>
 
